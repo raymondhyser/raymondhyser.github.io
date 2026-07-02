@@ -1,0 +1,63 @@
+---
+import { NAV_LINKS } from "../data/site";
+
+const currentPath = Astro.url.pathname;
+
+function isActive(href: string) {
+  if (href === "/") return currentPath === "/";
+  return currentPath.startsWith(href);
+}
+---
+
+<header class="sticky top-0 z-50 border-b border-tan bg-cream/90 backdrop-blur">
+  <nav class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+    <a href="/" class="font-serif text-lg font-medium text-espresso">
+      Raymond M. Hyser III
+    </a>
+    <button
+      id="nav-toggle"
+      class="text-espresso md:hidden"
+      aria-label="Toggle navigation menu"
+      aria-expanded="false"
+      aria-controls="nav-links"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+    <ul
+      id="nav-links"
+      class="absolute left-0 top-full hidden w-full flex-col gap-1 border-b border-tan bg-cream px-6 py-4 md:static md:flex md:w-auto md:flex-row md:gap-6 md:border-0 md:bg-transparent md:p-0"
+    >
+      {
+        NAV_LINKS.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class:list={[
+                "block rounded-full px-3 py-1.5 text-sm transition-colors",
+                isActive(link.href)
+                  ? "bg-terracotta/10 font-medium text-terracotta-dark"
+                  : "text-espresso-soft hover:text-terracotta-dark",
+              ]}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.getElementById("nav-toggle");
+  const links = document.getElementById("nav-links");
+  toggle?.addEventListener("click", () => {
+    const isOpen = links?.classList.toggle("flex");
+    links?.classList.toggle("hidden");
+    toggle.setAttribute("aria-expanded", String(Boolean(isOpen)));
+  });
+</script>

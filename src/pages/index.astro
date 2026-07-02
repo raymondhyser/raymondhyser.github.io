@@ -1,17 +1,86 @@
 ---
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import QuickLinkCard from "../components/QuickLinkCard.astro";
+import NewsItem from "../components/NewsItem.astro";
+import headshot from "../assets/images/raymond-headshot.jpeg";
+import { SITE, QUICK_LINKS } from "../data/site";
 
+const news = (await getCollection("news")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+const recentNews = news.slice(0, 2);
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title={SITE.name} description={SITE.description}>
+  <section class="mx-auto max-w-5xl px-6 pb-16 pt-14 sm:pt-20">
+    <div class="grid grid-cols-1 items-center gap-10 sm:grid-cols-[1.3fr_1fr]">
+      <div>
+        <p class="font-serif text-base italic text-sage-dark">Historian of coffee, empire, science, and the environment</p>
+        <h1 class="mt-2 font-serif text-4xl font-medium leading-tight text-espresso sm:text-5xl">
+          {SITE.name}
+        </h1>
+        <p class="mt-3 text-lg text-espresso-soft">{SITE.title}</p>
+      </div>
+
+      <div class="justify-self-center sm:justify-self-end">
+        <Image
+          src={headshot}
+          alt={`Portrait of ${SITE.name}`}
+          width={320}
+          height={320}
+          class="aspect-square w-56 rounded-2xl border border-tan object-cover shadow-md sm:w-72"
+        />
+      </div>
+    </div>
+
+    <div class="mt-10 max-w-3xl space-y-4 text-base leading-relaxed text-espresso-soft">
+      <p>
+        Raymond M. Hyser III is a historian of the life sciences working at the intersections of
+        Environmental History, the History of Science, and Digital Humanities. His scholarship
+        centers on the intimate relationships between people and plants, examining through
+        agriculture the cultivation practices, knowledge systems, and ecological transformations
+        that shaped empires and continue to shape our world.
+      </p>
+      <p>
+        He completed his Ph.D. in the History of Science, Technology, Environment, and Medicine
+        at the University of Texas at Austin, supported by the university's Outstanding Graduate
+        Research Fellowship. His dissertation,
+        <span class="font-medium text-espresso">
+          "Caribbean Ceylon: Coffee Landscapes, Knowledge Networks, and Environmental
+          Transformation in the 19th-Century Global Tropics,"
+        </span>
+        traces the south-to-south flow of cultivation techniques, coercive labor systems, and
+        European concepts of tropical environments between the colonial Caribbean and Ceylon
+        (present-day Sri Lanka). He currently holds a Postdoctoral Fellowship in the Program in
+        British, Irish, and Empire Studies at the University of Texas at Austin.
+      </p>
+    </div>
+  </section>
+
+  <section class="border-t border-tan bg-tan-light/40">
+    <div class="mx-auto max-w-5xl px-6 py-14">
+      <h2 class="font-serif text-2xl font-medium text-espresso">Explore</h2>
+      <div class="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {QUICK_LINKS.map((link) => <QuickLinkCard {...link} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-5xl px-6 py-14">
+    <div class="flex items-baseline justify-between">
+      <h2 class="font-serif text-2xl font-medium text-espresso">Updates</h2>
+      <a href="/news/" class="text-sm font-medium text-terracotta-dark hover:underline">
+        All updates
+      </a>
+    </div>
+    <div class="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
+      {
+        recentNews.map((item) => (
+          <NewsItem title={item.data.title} date={item.data.date} summary={item.data.summary} link={item.data.link} />
+        ))
+      }
+    </div>
+  </section>
+</Layout>

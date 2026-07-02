@@ -1,0 +1,126 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ExpandableSection from "../components/ExpandableSection.astro";
+
+const publications = [
+  {
+    venue: "Agricultural History",
+    date: "November 2025",
+    description: "Article drawn from the dissertation research.",
+    type: "Article",
+  },
+  {
+    venue: "Raw Capital: (Un)Natural Histories of Business and the Environment (University of Pennsylvania Press)",
+    date: "Forthcoming",
+    description: "Chapter in the forthcoming edited collection.",
+    type: "Book chapter",
+  },
+];
+
+const funders = [
+  "American Historical Association",
+  "American Institute of Sri Lankan Studies",
+  "North American Conference on British Studies",
+];
+
+const conferencePapers = [
+  {
+    title: "Global Tropics in Motion: The Environmental Reimagining of Eastern Australia Through Coffee",
+  },
+  {
+    title: "Tropical Migrations: The Afterlife of Ceylon's Coffee in Colonial Australia",
+    description:
+      "Traces the agricultural knowledge diaspora that followed the collapse of Ceylon's coffee industry to coffee leaf rust (Hemileia vastatrix), foregrounding the \"plant in plantation\" as a theoretical intervention in how historians understand crop migration after colonial crisis.",
+  },
+];
+---
+
+<Layout
+  title="Research"
+  description="Dissertation, publications, funding, and current research by Raymond M. Hyser III, a historian of coffee, empire, science, and the environment."
+>
+  <section class="mx-auto max-w-4xl px-6 pb-8 pt-14 sm:pt-20">
+    <p class="font-serif text-base italic text-sage-dark">Research</p>
+    <h1 class="mt-2 font-serif text-4xl font-medium leading-tight text-espresso sm:text-5xl">
+      Coffee, empire, and environmental change
+    </h1>
+    <p class="mt-4 max-w-2xl text-lg text-espresso-soft">
+      A dissertation, publications, funded projects, and a next book that follow coffee, and the
+      people who grew it, across the nineteenth-century world.
+    </p>
+  </section>
+
+  <section class="mx-auto max-w-4xl space-y-5 px-6 pb-20">
+    <ExpandableSection title="Dissertation" open={true}>
+      <h3 class="font-serif text-lg font-medium text-espresso">
+        "Caribbean Ceylon: Coffee Landscapes, Knowledge Networks, and Environmental
+        Transformation in the 19th-Century Global Tropics"
+      </h3>
+      <p class="mt-4 leading-relaxed">
+        "Caribbean Ceylon" traces how coffee farming, and the enslaved and colonized people who
+        practiced it, moved across the world during the nineteenth century, from
+        Saint-Domingue (present-day Haiti) to Jamaica and eventually to Ceylon (present-day Sri
+        Lanka). The dissertation shows how techniques of cultivation, systems of forced labor,
+        and European ideas about tropical environments spread from the Caribbean to South Asia,
+        reshaping economies and landscapes on both sides of the globe. Drawing on agricultural
+        manuals, planters' diaries, poetry, and geospatial data from archives on three
+        continents, the project argues that coffee itself, as a living plant with its own
+        ecological demands, shaped the plantation systems and colonial societies built around
+        it, just as much as those societies shaped the land they occupied.
+      </p>
+    </ExpandableSection>
+
+    <ExpandableSection title="Publications">
+      <ul class="space-y-5">
+        {
+          publications.map((pub) => (
+            <li class="flex flex-col gap-1">
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="rounded-full border border-terracotta/40 bg-terracotta/10 px-2.5 py-0.5 text-xs font-medium text-terracotta-dark">
+                  {pub.type}
+                </span>
+                <span class="text-xs uppercase tracking-wide text-espresso-soft">{pub.date}</span>
+              </div>
+              <p class="font-medium text-espresso">{pub.venue}</p>
+              <p class="text-sm text-espresso-soft">{pub.description}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </ExpandableSection>
+
+    <ExpandableSection title="Selected funding">
+      <ul class="flex flex-wrap gap-2">
+        {
+          funders.map((funder) => (
+            <li class="rounded-full border border-sage/40 bg-sage/10 px-3 py-1 text-sm text-sage-dark">
+              {funder}
+            </li>
+          ))
+        }
+      </ul>
+    </ExpandableSection>
+
+    <ExpandableSection title="Conference papers">
+      <ul class="space-y-5">
+        {
+          conferencePapers.map((paper) => (
+            <li>
+              <p class="font-medium text-espresso">"{paper.title}"</p>
+              {paper.description && <p class="mt-1 text-sm text-espresso-soft">{paper.description}</p>}
+            </li>
+          ))
+        }
+      </ul>
+    </ExpandableSection>
+
+    <ExpandableSection title="Next project">
+      <h3 class="font-serif text-lg font-medium text-espresso">The Nature of Quality</h3>
+      <p class="mt-3 leading-relaxed">
+        Raymond's next monograph project, tentatively titled <span class="font-medium text-espresso">The Nature of Quality</span>,
+        examines how nineteenth-century coffee producers and merchants constructed ideas of
+        "quality" through both commercial practice and the life sciences.
+      </p>
+    </ExpandableSection>
+  </section>
+</Layout>

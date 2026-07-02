@@ -1,0 +1,41 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const cvPath = "/cv/Hyser_Raymond_CV.pdf";
+---
+
+<Layout title="CV" description="Curriculum vitae of Raymond M. Hyser III, viewable and downloadable as a PDF.">
+  <section class="mx-auto max-w-4xl px-6 pb-8 pt-14 sm:pt-20">
+    <p class="font-serif text-base italic text-sage-dark">CV</p>
+    <div class="mt-2 flex flex-wrap items-end justify-between gap-4">
+      <h1 class="font-serif text-4xl font-medium leading-tight text-espresso sm:text-5xl">
+        Curriculum vitae
+      </h1>
+      <a
+        href={cvPath}
+        download
+        class="inline-flex items-center gap-2 rounded-full bg-terracotta px-5 py-2.5 text-sm font-medium text-cream shadow-sm transition-colors hover:bg-terracotta-dark"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+          <polyline points="7 10 12 15 17 10" />
+          <line x1="12" y1="15" x2="12" y2="3" />
+        </svg>
+        Download CV (PDF)
+      </a>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-4xl px-6 pb-20">
+    <object data={cvPath} type="application/pdf" class="h-[85vh] w-full rounded-xl border border-tan bg-cream-card">
+      <div class="flex h-full flex-col items-center justify-center gap-3 p-10 text-center">
+        <p class="text-espresso-soft">
+          Your browser can't display the PDF preview here.
+        </p>
+        <a href={cvPath} download class="font-medium text-terracotta-dark hover:underline">
+          Download the CV instead
+        </a>
+      </div>
+    </object>
+  </section>
+</Layout>

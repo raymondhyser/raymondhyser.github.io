@@ -1,0 +1,28 @@
+---
+import type { DigitalProject } from "../data/projects";
+
+interface Props extends DigitalProject {}
+
+const { name, role, description, link } = Astro.props;
+---
+
+<article class="flex flex-col rounded-xl border border-tan bg-cream-card p-6 shadow-sm">
+  <h2 class="font-serif text-xl font-medium text-espresso">{name}</h2>
+  <p class="mt-1 text-sm font-medium text-terracotta-dark">{role}</p>
+  <p class="mt-4 flex-1 text-sm leading-relaxed text-espresso-soft">{description}</p>
+  {
+    link && (
+      <a
+        href={link}
+        class="mt-5 inline-flex w-fit items-center gap-1 text-sm font-medium text-terracotta-dark hover:underline"
+      >
+        Visit project
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+          <polyline points="15 3 21 3 21 9" />
+          <line x1="10" y1="14" x2="21" y2="3" />
+        </svg>
+      </a>
+    )
+  }
+</article>

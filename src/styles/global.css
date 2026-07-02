@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Fraunces", ui-serif, Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --color-cream: #faf6f0;
+  --color-cream-card: #fffdfa;
+  --color-tan: #d9cbb8;
+  --color-tan-light: #ede4d3;
+  --color-espresso: #2b2118;
+  --color-espresso-soft: #5c4f42;
+  --color-terracotta: #b5533c;
+  --color-terracotta-dark: #8f3f2c;
+  --color-sage: #7a8b6f;
+  --color-sage-dark: #5f6f55;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-espresso);
+  font-family: var(--font-sans);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-serif);
+}

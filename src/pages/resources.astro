@@ -1,0 +1,63 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { RESOURCE_CATEGORIES } from "../data/resources";
+---
+
+<Layout
+  title="Resources"
+  description="A curated clearinghouse of digital archives, DH tools, mapping and GIS resources, and text annotation platforms for historians and digital humanities researchers."
+>
+  <section class="mx-auto max-w-4xl px-6 pb-8 pt-14 sm:pt-20">
+    <p class="font-serif text-base italic text-sage-dark">Resources</p>
+    <h1 class="mt-2 font-serif text-4xl font-medium leading-tight text-espresso sm:text-5xl">
+      A clearinghouse for historians and DH researchers
+    </h1>
+    <p class="mt-4 max-w-2xl text-lg leading-relaxed text-espresso-soft">
+      A curated set of archives, tools, and platforms that support research in environmental
+      history and the digital humanities.
+    </p>
+
+    <div class="mt-6 rounded-lg border border-terracotta/30 bg-terracotta/10 px-4 py-3 text-sm text-terracotta-dark">
+      This list is a placeholder set of widely used tools and archives. It will be replaced with
+      Raymond's own curated resource list and categories.
+    </div>
+
+    <nav class="mt-8 flex flex-wrap gap-2" aria-label="Resource categories">
+      {
+        RESOURCE_CATEGORIES.map((category) => (
+          <a
+            href={`#${category.slug}`}
+            class="rounded-full border border-tan bg-cream-card px-3 py-1.5 text-sm text-espresso-soft transition-colors hover:border-terracotta/50 hover:text-terracotta-dark"
+          >
+            {category.name}
+          </a>
+        ))
+      }
+    </nav>
+  </section>
+
+  <section class="mx-auto max-w-4xl space-y-12 px-6 pb-20">
+    {
+      RESOURCE_CATEGORIES.map((category) => (
+        <div id={category.slug} class="scroll-mt-24">
+          <h2 class="font-serif text-2xl font-medium text-espresso">{category.name}</h2>
+          <ul class="mt-5 space-y-3">
+            {category.resources.map((resource) => (
+              <li class="rounded-lg border border-tan bg-cream-card px-5 py-4">
+                <a
+                  href={resource.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="font-medium text-espresso hover:text-terracotta-dark"
+                >
+                  {resource.name}
+                </a>
+                <p class="mt-1 text-sm text-espresso-soft">{resource.description}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </section>
+</Layout>

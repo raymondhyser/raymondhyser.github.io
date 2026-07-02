@@ -1,0 +1,28 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import NewsItem from "../components/NewsItem.astro";
+
+const news = (await getCollection("news")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<Layout title="Updates" description="All news and updates from Raymond M. Hyser III.">
+  <section class="mx-auto max-w-4xl px-6 pb-8 pt-14 sm:pt-20">
+    <p class="font-serif text-base italic text-sage-dark">Updates</p>
+    <h1 class="mt-2 font-serif text-4xl font-medium leading-tight text-espresso sm:text-5xl">
+      All updates
+    </h1>
+  </section>
+
+  <section class="mx-auto max-w-4xl px-6 pb-20">
+    <div class="space-y-6">
+      {
+        news.map((item) => (
+          <NewsItem title={item.data.title} date={item.data.date} summary={item.data.summary} link={item.data.link} />
+        ))
+      }
+    </div>
+  </section>
+</Layout>

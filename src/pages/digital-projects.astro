@@ -1,0 +1,27 @@
+---
+import Layout from "../layouts/Layout.astro";
+import DigitalProjectCard from "../components/DigitalProjectCard.astro";
+import { DIGITAL_PROJECTS } from "../data/projects";
+---
+
+<Layout
+  title="Digital Projects"
+  description="Digital humanities projects led and contributed to by Raymond M. Hyser III, including AVAnnotate, Quest for Quinine, World History Commons, and Not Even Past."
+>
+  <section class="mx-auto max-w-5xl px-6 pb-8 pt-14 sm:pt-20">
+    <p class="font-serif text-base italic text-sage-dark">Digital Projects</p>
+    <h1 class="mt-2 font-serif text-4xl font-medium leading-tight text-espresso sm:text-5xl">
+      Digital humanities collaborations
+    </h1>
+    <p class="mt-4 max-w-2xl text-lg text-espresso-soft">
+      Building tools, games, and open-access resources that bring environmental and world
+      history to students, educators, and the public.
+    </p>
+  </section>
+
+  <section class="mx-auto max-w-5xl px-6 pb-20">
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+      {DIGITAL_PROJECTS.map((project) => <DigitalProjectCard {...project} />)}
+    </div>
+  </section>
+</Layout>
