@@ -35,7 +35,21 @@ export const COURSES = [
   },
   {
     title: "Globalization: A Modern History",
-    role: "Instructor of Record / TA",
-    description: "",
+    role: "Teaching Assistant",
+    description: "Survey of world history from the sixteenth century to the present.",
   },
+  {
+    title: "United States, 1492-1865",
+    role: "Teaching Assistant",
+    description: "Survey of United States history from the colonial period through the Civil War.",
+  },
+  {
+    title: "Perspectives on Science & Math",
+    role: "Teaching Assistant",
+    description: "Explores the intellectual, social, and cultural history of science and mathematics, focusing on the 17th century to the present. Designed for students in the UTeach-Natural Sciences program.",
+  },
+  {
+    title: "History of Modern Science",
+    role: "Teaching Assistant",
+    description: "The history of science and its place in society from the time of Newton to the present."
 ];
