@@ -52,4 +52,5 @@ export const COURSES = [
     title: "History of Modern Science",
     role: "Teaching Assistant",
     description: "The history of science and its place in society from the time of Newton to the present."
+  },
 ];
