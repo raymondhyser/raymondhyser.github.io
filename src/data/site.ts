@@ -37,12 +37,12 @@ export const QUICK_LINKS = [
   {
     label: "Research",
     href: "/research/",
-    description: "Dissertation, publications, funding, and current projects.",
+    description: "Current book project, publications, and current projects.",
   },
   {
     label: "Digital Projects",
     href: "/digital-projects/",
-    description: "AVAnnotate, Quest for Quinine, and other DH collaborations.",
+    description: "Selected collection of major DH projects and collaborations.",
   },
   {
     label: "Teaching",
@@ -58,5 +58,10 @@ export const QUICK_LINKS = [
     label: "Resources",
     href: "/resources/",
     description: "A curated clearinghouse for historians and DH researchers.",
+  },
+  {
+    labels: "Under Cultivation",
+    href: "/under-cultivation/",
+    description: "Short pieces on ideas, sources, and things still taking root"
   },
 ];
