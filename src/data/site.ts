@@ -60,7 +60,7 @@ export const QUICK_LINKS = [
     description: "A curated clearinghouse for historians and DH researchers.",
   },
   {
-    labels: "Under Cultivation",
+    label: "Under Cultivation",
     href: "/under-cultivation/",
     description: "Short pieces on ideas, sources, and things still taking root"
   },
