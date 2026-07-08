@@ -1,0 +1,48 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+const entries = (await getCollection("cultivation")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<Layout
+  title="Under Cultivation"
+  description="Short pieces on sources, ideas, and things still taking root, from Raymond M. Hyser III's ongoing research in environmental history and the history of science."
+>
+  <section class="mx-auto max-w-3xl px-6 pb-8 pt-14 sm:pt-20">
+    <p class="font-serif text-base italic text-sage-dark">Under Cultivation</p>
+    <h1 class="mt-2 font-serif text-4xl font-medium leading-tight text-espresso sm:text-5xl">
+      Short pieces on sources, ideas, and things still taking root
+    </h1>
+    <p class="mt-4 max-w-2xl text-lg text-espresso-soft">
+      Occasional notes on archival sources, readings, and half-formed arguments from ongoing
+      research in the histories of agriculture, empire, science, and the environment.
+    </p>
+  </section>
+
+  <section class="mx-auto max-w-3xl px-6 pb-20">
+    <ul class="divide-y divide-tan">
+      {
+        entries.map((entry) => {
+          const formattedDate = entry.data.date.toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "long",
+            timeZone: "UTC",
+          });
+          return (
+            <li class="py-4">
+              <a href={`/under-cultivation/${entry.id}/`} class="group flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                <span class="font-serif text-lg text-espresso group-hover:text-terracotta-dark">
+                  {entry.data.title}
+                </span>
+                <span class="shrink-0 text-sm text-espresso-soft">{formattedDate}</span>
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </section>
+</Layout>

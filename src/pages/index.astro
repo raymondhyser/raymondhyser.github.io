@@ -1,16 +1,9 @@
 ---
 import { Image } from "astro:assets";
-import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import QuickLinkCard from "../components/QuickLinkCard.astro";
-import NewsItem from "../components/NewsItem.astro";
 import headshot from "../assets/images/raymond-headshot.jpeg";
 import { SITE, QUICK_LINKS } from "../data/site";
-
-const news = (await getCollection("news")).sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
-);
-const recentNews = news.slice(0, 2);
 ---
 
 <Layout title={SITE.name} description={SITE.description}>
@@ -68,19 +61,4 @@ const recentNews = news.slice(0, 2);
     </div>
   </section>
 
-  <section class="mx-auto max-w-5xl px-6 py-14">
-    <div class="flex items-baseline justify-between">
-      <h2 class="font-serif text-2xl font-medium text-espresso">Updates</h2>
-      <a href="/news/" class="text-sm font-medium text-terracotta-dark hover:underline">
-        All updates
-      </a>
-    </div>
-    <div class="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
-      {
-        recentNews.map((item) => (
-          <NewsItem title={item.data.title} date={item.data.date} summary={item.data.summary} link={item.data.link} />
-        ))
-      }
-    </div>
-  </section>
 </Layout>

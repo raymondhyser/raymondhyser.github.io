@@ -1,7 +1,7 @@
 export const SITE = {
   name: "Raymond M. Hyser III",
   title: "Postdoctoral Fellow, Program in British, Irish, and Empire Studies, University of Texas at Austin",
-  email: "PLACEHOLDER@example.com",
+  email: "rhyser@utexas.edu",
   description:
     "Raymond M. Hyser III is a historian of the life sciences working at the intersections of Environmental History, the History of Science, and Digital Humanities.",
 };
@@ -13,12 +13,12 @@ export const NAV_LINKS = [
   { label: "Teaching", href: "/teaching/" },
   { label: "CV", href: "/cv/" },
   { label: "Resources", href: "/resources/" },
-  { label: "Updates", href: "/news/" },
+  { label: "Under Cultivation", href: "/under-cultivation/" },
 ];
 
 export const SOCIAL_LINKS = [
-  { label: "LinkedIn", href: "#", icon: "linkedin" },
-  { label: "Email", href: "mailto:PLACEHOLDER@example.com", icon: "email" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/raymondhyser/", icon: "linkedin" },
+  { label: "Email", href: "mailto:rhyser@utexas.edu", icon: "email" },
 ];
 
 export const RESEARCH_INTERESTS = [

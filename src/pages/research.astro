@@ -17,12 +17,6 @@ const publications = [
   },
 ];
 
-const funders = [
-  "American Historical Association",
-  "American Institute of Sri Lankan Studies",
-  "North American Conference on British Studies",
-];
-
 const conferencePapers = [
   {
     title: "Global Tropics in Motion: The Environmental Reimagining of Eastern Australia Through Coffee",
@@ -89,19 +83,7 @@ const conferencePapers = [
       </ul>
     </ExpandableSection>
 
-    <ExpandableSection title="Selected funding">
-      <ul class="flex flex-wrap gap-2">
-        {
-          funders.map((funder) => (
-            <li class="rounded-full border border-sage/40 bg-sage/10 px-3 py-1 text-sm text-sage-dark">
-              {funder}
-            </li>
-          ))
-        }
-      </ul>
-    </ExpandableSection>
-
-    <ExpandableSection title="Conference papers">
+    <ExpandableSection title="Selected Conference Papers">
       <ul class="space-y-5">
         {
           conferencePapers.map((paper) => (
@@ -114,7 +96,7 @@ const conferencePapers = [
       </ul>
     </ExpandableSection>
 
-    <ExpandableSection title="Next project">
+    <ExpandableSection title="Next Projects">
       <h3 class="font-serif text-lg font-medium text-espresso">The Nature of Quality</h3>
       <p class="mt-3 leading-relaxed">
         Raymond's next monograph project, tentatively titled <span class="font-medium text-espresso">The Nature of Quality</span>,
